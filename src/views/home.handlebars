@@ -1,0 +1,178 @@
+<div class="header">
+    <div class="logo d-flex align-items-center">
+        <img src="/img/icon-people.e884b90e.svg" alt="">
+        <p>Mah Friends</p>
+    </div>
+
+    <div class="add">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <div>
+                <i class="fa-solid fa-user-plus"></i> <b>ADD</b>
+            </div>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="true" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-add">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">
+                            <i class="fa-solid fa-user-plus"></i> ADD FRIENDS
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id="form-add-friend" method="post">
+                            <div class="mb-3">
+                                <label for="name" class="form-label ">Name</label>
+                                <div class="input align-items-center">
+
+                                    <input type="text" class="form-control name" name="name" id="name">
+
+                                    <div class="icon-form" data-bs-toggle="tooltip" data-bs-placement="right"
+                                        title="Required">
+                                        <i class=" fa-regular fa-circle-question"></i>
+                                    </div>
+                                </div>
+                                <br>
+                                <label for="address" class="form-label ">Address</label>
+                                <div class="input align-items-center ">
+                                    <input type="text" class="form-control address" name="address" id="address">
+                                    <div class="icon-form" data-bs-toggle="tooltip" data-bs-placement="right"
+                                        title="Required">
+                                        <i class=" fa-regular fa-circle-question"></i>
+                                    </div>
+                                </div>
+                                <br>
+                                <label for="phone" class="form-label ">Phone Number</label>
+                                <div class="input align-items-center">
+                                    <input type="number" class="form-control phone" name="phone" id="phone">
+                                    <div class="icon-form" data-bs-toggle="tooltip" data-bs-placement="right"
+                                        title="Required">
+                                        <i class=" fa-regular fa-circle-question"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary btn-add-friends">Add Friend</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class=".container-fluid">
+    <form method="get" action="/">
+        <input type=" text" class="form-control filter-friends" placeholder="Filter friends" name="search">
+    </form>
+    <div class="row g-3 list-friend">
+
+
+        {{#each friend}}
+        <div class="col-xs-1  col-md-6 col-lg-4 col-xl-3 friends">
+            <div class="card border-dark bg-dark">
+                <div class="card-body ">
+                    <h5 class="card-title d-flex align-items-center ">
+                        <div class=" img-user">
+                            <img src="/img/icon-user.901b481e.svg" alt="">
+                        </div>
+                        {{this.name}}
+                    </h5>
+
+                    <p><i class="fa-solid fa-house-chimney"></i> {{this.address}}</p>
+                    <p><i class="fa-solid fa-phone"></i> {{this.phone}}</p>
+                    <div class="edit d-flex justify-content-end">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#a{{this._id}}"><i class=" fa-solid fa-pen"></i>
+                            Edit</button>
+                        <form method="post" action="/{{this._id}}?_method=DELETE">
+                            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i>
+                                Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{/each}}
+
+
+    </div>
+
+    {{#each friend}}
+
+    <!-- Modal -->
+    <div class="modal fade" id="a{{this._id}}" data-bs-backdrop="true" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true" keyboard="true">
+        <div class="modal-dialog modal-add">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                        <i class="fa-solid fa-user-plus"></i> EDIT FRIENDS
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-edit-friend" method="post" action="/{{this._id}}?_method=PUT">
+                        <div class=" mb-3">
+                            <label class="form-label ">Name</label>
+                            <div class="input align-items-center">
+                                <input type="text" class="form-control name nameEdit${user.id}" value="{{this.name}}"
+                                    name="name">
+                                <div class="icon-form" data-bs-toggle="tooltip" data-bs-placement="right"
+                                    title="Required">
+                                    <i class=" fa-regular fa-circle-question"></i>
+                                </div>
+                            </div>
+                            <br>
+                            <label class="form-label ">Address</label>
+                            <div class="input align-items-center ">
+                                <input type="text" class="form-control address addressEdit${user.id}"
+                                    value="{{this.address}}" name="address">
+                                <div class="icon-form" data-bs-toggle="tooltip" data-bs-placement="right"
+                                    title="Required">
+                                    <i class=" fa-regular fa-circle-question"></i>
+                                </div>
+                            </div>
+                            <br>
+                            <label class="form-label ">Phone Number</label>
+                            <div class="input align-items-center">
+                                <input type="text" class="form-control phone phoneEdit${user.id}" value="{{this.phone}}"
+                                    name="phone">
+                                <div class="icon-form" data-bs-toggle="tooltip" data-bs-placement="right"
+                                    title="Required">
+                                    <i class=" fa-regular fa-circle-question"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary btn-edit-friends">Edit
+                                Friend</button>
+                            <button type="button" class="btn btn-secondary btn-edit-cancel"
+                                data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {{/each}}
+
+
+
+
+</div>
+
+
+
+</div>

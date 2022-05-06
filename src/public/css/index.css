@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    color: white;
+}
+
+.btn {
+    border-radius: 6px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+body {
+    background-color: #111419;
+}
+
+.header {
+    height: 56px;
+    background-color: #191b21;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.logo,
+.add {
+    margin: 0 40px;
+}
+
+.logo img {
+    width: 35px;
+    margin-right: 1.5rem;
+}
+
+.logo p {
+    margin: 0;
+}
+
+.modal-content {
+    background-color: #212529;
+}
+
+.btn-add {
+    background-color: #3498ff;
+    width: 120.73px;
+}
+
+.form {
+    display: flex;
+}
+
+.modal-footer,
+.modal-header {
+    border: 0;
+}
+
+.btn-close {
+    filter: invert(100);
+}
+
+.modal-add {
+    min-width: 600px;
+}
+
+.input {
+    display: flex;
+}
+
+.icon-form {
+    margin-left: 10px;
+}
+
+.fa-regular {
+    opacity: 0.7;
+}
+
+.form-label {
+    margin-bottom: 2px;
+}
+
+.row {
+    padding: 0 40px;
+}
+
+.filter-friends {
+    background-color: #191b21;
+    border: 1px solid violet;
+    width: 470px;
+    padding: 15px;
+    margin: 30px 0 0 40px;
+}
+
+.list-friend {
+    margin: 40px auto;
+}
+
+.card {
+    width: 100%;
+    border: 2px dashed #191b21;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    border: 2px dashed #3498ff !important;
+    transition: 0.3s ease;
+}
+
+.img-user {
+    border-radius: 50%;
+    background-color: black;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.img-user img {
+    object-fit: fill;
+    padding-top: 10px;
+    margin: 10px;
+}
+
+.edit .btn {
+    margin-left: 10px;
+}
+
+.filter-friends:focus-visible {
+    background-color: #191b21;
+    border-color: #fff;
+    color: white;
+}
+
+.filter-friends {
+    color: white;
+}
