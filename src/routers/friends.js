@@ -9,16 +9,13 @@ router.get('', (req, res) => {
         Friends.find({})
             .then(friend => {
                 friend = friend.map(fri => fri.toObject())
-                console.log('get1', friend)
                 res.render('home', { friend })
             })
             .catch(er => res.status(400).send(er))
 
     } else {
-        console.log(name)
         Friends.find({})
             .then(friend => {
-                console.log(friend)
                 friend = friend.map(fri => fri.toObject())
                 friend = friend.filter(user => !user.name.indexOf(name))
                 res.render('home', { friend })
